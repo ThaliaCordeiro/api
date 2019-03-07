@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Categoria extends Model
 {
     protected $fillable = [
-        "nome","descricao","preco","cor"
+        "descricao"
     ];
-	
+	public function Api01()
+    {
+         return  $this->hasMany('App\api01');
+    }
 }

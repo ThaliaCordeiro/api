@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateApi01sTable extends Migration
+class CreatePhonesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateApi01sTable extends Migration
      */
     public function up()
     {
-        Schema::create('api01s', function (Blueprint $table) {
+        Schema::create('phones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descricao');
-            $table->string('peso');
-            $table->string('cor');
-            $table->double('preco', 5, 2);
+            $table->string('numero');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users'); 
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateApi01sTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('api01s');
+        Schema::dropIfExists('phones');
     }
 }
